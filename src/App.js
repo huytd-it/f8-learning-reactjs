@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { actions, StoreContext, StoreProvider, useStore } from './useContext+useReducer';
+import Content from './useContext/Content';
+import { createContext, useContext, useState } from 'react';
+
+
+export const ThemeContext = createContext();
 
 function App() {
+
+  const [state, dispatch] = useStore();
+
+
+  const [todos, todoInput] = state;
+  console.log(state);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <div className="" style={{ padding: 15 }}>
+
+      <input
+        value={todoInput}
+        placeholder='Enter todo ...'
+        onChange={e => dispatch(actions.setTodoInput(e.target.value))} />
+      <Content></Content>
     </div>
+
   );
 }
 
