@@ -1,20 +1,13 @@
 
 import './App.css';
-import { actions, StoreContext, StoreProvider, useStore } from './useContext+useReducer';
-import Content from './useContext/Content';
-import { createContext, useContext, useState } from 'react';
-
-
-export const ThemeContext = createContext();
+import { actions, useStore } from './useContext+useReducer';
 
 function App() {
 
   const [state, dispatch] = useStore();
+  const {todos, todoInput} = state;
 
-
-  const [todos, todoInput] = state;
-  console.log(state);
-
+  console.log(todos);
   return (
 
     <div className="" style={{ padding: 15 }}>
@@ -23,7 +16,7 @@ function App() {
         value={todoInput}
         placeholder='Enter todo ...'
         onChange={e => dispatch(actions.setTodoInput(e.target.value))} />
-      <Content></Content>
+     
     </div>
 
   );
