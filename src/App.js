@@ -1,25 +1,15 @@
 
 import './App.css';
-import { actions, useStore } from './useContext+useReducer';
+import styles from './CSSModule/Button.module.scss'
 
 function App() {
 
-  const [state, dispatch] = useStore();
-  const {todos, todoInput} = state;
+  return (<div><button>
+    Button
+  </button>
+    <button className={styles.red}> Red</button></div>)
 
-  console.log(todos);
-  return (
 
-    <div className="" style={{ padding: 15 }}>
-
-      <input
-        value={todoInput}
-        placeholder='Enter todo ...'
-        onChange={e => dispatch(actions.setTodoInput(e.target.value))} />
-     
-    </div>
-
-  );
 }
 
 export default App;

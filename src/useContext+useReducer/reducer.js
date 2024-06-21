@@ -1,4 +1,4 @@
-import { SET_TODO_INPUT } from "./constants";
+import { ADD_TODO, SET_TODO_INPUT } from "./constants";
 
 
 //định nghĩa state
@@ -14,6 +14,9 @@ function reducer(state, action) {
     case SET_TODO_INPUT: {
       return { ...state, todoInput: action.payload }
     }
+    case ADD_TODO: {
+      return { ...state, todos: [...state.todos, action.payload] }
+    }
     default: {
       throw new Error('Invalid action.')
     }
@@ -22,3 +25,4 @@ function reducer(state, action) {
 
 export { initState };
 export default reducer;
+
